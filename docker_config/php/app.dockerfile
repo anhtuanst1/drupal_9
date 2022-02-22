@@ -50,7 +50,6 @@ RUN apt-get install -y curl \
     php8.1-fpm \
     php8.1-intl \
     php8.1-oauth \
-    php8.1-sqlite \
     php8.1-xml
 
 # Install composer

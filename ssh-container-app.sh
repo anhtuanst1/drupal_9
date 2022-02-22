@@ -8,18 +8,19 @@ reset=`tput sgr0`
 echo "${yellow}"
 cat << "EOF" 
 
+______                        _ 
+|  _  \                      | |
+| | | |_ __ _   _ _ __   __ _| |
+| | | | '__| | | | '_ \ / _` | |
+| |/ /| |  | |_| | |_) | (_| | |
+|___/ |_|   \__,_| .__/ \__,_|_|
+                 | |            
+                 |_|            
 
-______                            _     _____ 
-|  _  \                          | |   |  _  |
-| | | |_ __ _   _ _ __   __ _  __| |   | |_| |
-| | | | '__| | | | '_ \ / _` |/ _` |   \____ |
-| |/ /| |  | |_| | |_) | (_| | (_| |   .___/ /
-|___/ |_|   \__,_| .__/ \__,_|\__,_|   \____/ 
-                 | |                          
-                 |_|                          
-
+     
 =========================================================================
-|		   SSH source drupad_9_admin				|
+| 		Select the menu to perform the function			|
+|		1. SSH source drupal_9_admin				|
 =========================================================================
 EOF
 echo "${reset}"
@@ -28,6 +29,17 @@ print_end_application () {
 	echo -n "${green}Press Any Key To Exit...${reset}"
 	read VAR
 	exit
+}
+print_menu () {
+	printf "${green}Please select menu : [1]\n${reset}"
+	read ask
+	
+	case "$ask" in
+        1)
+            main_script "drupal_9_admin" ;;
+        *)
+            print_menu
+	esac
 }
 
 main_script(){
@@ -43,4 +55,4 @@ main_script(){
 	echo "${green}End ssh with source${cyan} $environment ${reset}"
 }
 
-main_script "drupad_9_admin"
+print_menu 

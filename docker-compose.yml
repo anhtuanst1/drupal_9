@@ -50,25 +50,25 @@ services:
     depends_on:
       - app
   # mailhog service
-  # mailhog:
-  #   image: mailhog/mailhog
-  #   ports: 
-  #     - 1025:1025 # smtp server
-  #     - 8025:8025 # web ui
-  #   networks:
-  #     - app-network
-  # redis:
-  #   image: redis:6.2.6-alpine
-  #   restart: unless-stopped
-  #   volumes:
-  #   - redisapp:/data
-  #   ports:
-  #     - "6379:6379"
-  #   networks:
-  #     - app-network
+  mailhog:
+    image: mailhog/mailhog
+    ports: 
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
+    networks:
+      - app-network
+  redis:
+    image: redis:6.2.6-alpine
+    restart: unless-stopped
+    volumes:
+    - redisapp:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
   # swagger-editor:
   #   image: swaggerapi/swagger-editor
-  #   container_name: "swagger-editor-drupad9"
+  #   container_name: "swagger-editor"
   #   ports:
   #     - "8088:8080"
 #Docker Networks
